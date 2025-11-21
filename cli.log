@@ -1,0 +1,272 @@
+$ biome lint app.svelte
+app.svelte:2:8 lint/correctness/noUnusedImports  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This import is unused.
+  
+    1 │ <script lang="ts">
+  > 2 │ import TasksForm from './components/tasks-form.svelte';
+      │        ^^^^^^^^^
+    3 │ import TasksList from './components/tasks-list.svelte';
+    4 │ import type { Filter, Task } from './types';
+  
+  ℹ Unused imports might be the result of an incomplete refactoring.
+  
+  ℹ Unsafe fix: Remove the unused imports.
+  
+    1 │ import·TasksForm·from·'./components/tasks-form.svelte';
+      │ -------------------------------------------------------
+
+app.svelte:3:8 lint/correctness/noUnusedImports  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This import is unused.
+  
+    1 │ <script lang="ts">
+    2 │ import TasksForm from './components/tasks-form.svelte';
+  > 3 │ import TasksList from './components/tasks-list.svelte';
+      │        ^^^^^^^^^
+    4 │ import type { Filter, Task } from './types';
+    5 │ 
+  
+  ℹ Unused imports might be the result of an incomplete refactoring.
+  
+  ℹ Unsafe fix: Remove the unused imports.
+  
+     1  1 │   import TasksForm from './components/tasks-form.svelte';
+     2    │ - import·TasksList·from·'./components/tasks-list.svelte';
+     3  2 │   import type { Filter, Task } from './types';
+     4  3 │   
+  
+
+app.svelte:6:7 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This variable message is unused.
+  
+    4 │ import type { Filter, Task } from './types';
+    5 │ 
+  > 6 │ const message = 'Tasks App';
+      │       ^^^^^^^
+    7 │ let currentFilter = $state<Filter>('all');
+    8 │ let tasks = $state<Task[]>([]);
+  
+  ℹ Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  ℹ Unsafe fix: If this is intentional, prepend message with an underscore.
+  
+     3  3 │   import type { Filter, Task } from './types';
+     4  4 │   
+     5    │ - const·message·=·'Tasks·App';
+        5 │ + const·_message·=·'Tasks·App';
+     6  6 │   let currentFilter = $state<Filter>('all');
+     7  7 │   let tasks = $state<Task[]>([]);
+  
+
+app.svelte:9:5 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This variable totalDone is unused.
+  
+     7 │ let currentFilter = $state<Filter>('all');
+     8 │ let tasks = $state<Task[]>([]);
+   > 9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+       │     ^^^^^^^^^
+    10 │ 
+    11 │ const filteredTasks = $derived.by(() => {
+  
+  ℹ Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  ℹ Unsafe fix: If this is intentional, prepend totalDone with an underscore.
+  
+     6  6 │   let currentFilter = $state<Filter>('all');
+     7  7 │   let tasks = $state<Task[]>([]);
+     8    │ - let·totalDone·=·$derived(tasks.reduce((total,·task)·=>·total·+·Number(task.done),·0));
+        8 │ + let·_totalDone·=·$derived(tasks.reduce((total,·task)·=>·total·+·Number(task.done),·0));
+     9  9 │   
+    10 10 │   const filteredTasks = $derived.by(() => {
+  
+
+app.svelte:11:7 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This variable filteredTasks is unused.
+  
+     9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+    10 │ 
+  > 11 │ const filteredTasks = $derived.by(() => {
+       │       ^^^^^^^^^^^^^
+    12 │   switch (currentFilter) {
+    13 │     case 'all': {
+  
+  ℹ Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  ℹ Unsafe fix: If this is intentional, prepend filteredTasks with an underscore.
+  
+     8  8 │   let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+     9  9 │   
+    10    │ - const·filteredTasks·=·$derived.by(()·=>·{
+       10 │ + const·_filteredTasks·=·$derived.by(()·=>·{
+    11 11 │     switch (currentFilter) {
+    12 12 │       case 'all': {
+  
+
+app.svelte:26:10 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This function addTask is unused.
+  
+    24 │ });
+    25 │ 
+  > 26 │ function addTask(newTask: string) {
+       │          ^^^^^^^
+    27 │   tasks.push({
+    28 │     id: crypto.randomUUID(),
+  
+  ℹ Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  ℹ Unsafe fix: If this is intentional, prepend addTask with an underscore.
+  
+    23 23 │   });
+    24 24 │   
+    25    │ - function·addTask(newTask:·string)·{
+       25 │ + function·_addTask(newTask:·string)·{
+    26 26 │     tasks.push({
+    27 27 │       id: crypto.randomUUID(),
+  
+
+app.svelte:34:10 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This function toggleDone is unused.
+  
+    32 │ }
+    33 │ 
+  > 34 │ function toggleDone(task: Task) {
+       │          ^^^^^^^^^^
+    35 │   task.done = !task.done;
+    36 │ }
+  
+  ℹ Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  ℹ Unsafe fix: If this is intentional, prepend toggleDone with an underscore.
+  
+    31 31 │   }
+    32 32 │   
+    33    │ - function·toggleDone(task:·Task)·{
+       33 │ + function·_toggleDone(task:·Task)·{
+    34 34 │     task.done = !task.done;
+    35 35 │   }
+  
+
+app.svelte:38:10 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ⚠ This function removeTask is unused.
+  
+    36 │ }
+    37 │ 
+  > 38 │ function removeTask(id: string) {
+       │          ^^^^^^^^^^
+    39 │   const index = tasks.findIndex((task) => task.id === id);
+    40 │   tasks.splice(index, 1);
+  
+  ℹ Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  ℹ Unsafe fix: If this is intentional, prepend removeTask with an underscore.
+  
+    35 35 │   }
+    36 36 │   
+    37    │ - function·removeTask(id:·string)·{
+       37 │ + function·_removeTask(id:·string)·{
+    38 38 │     const index = tasks.findIndex((task) => task.id === id);
+    39 39 │     tasks.splice(index, 1);
+  
+
+app.svelte:7:1 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ This let declares a variable that is only assigned once.
+  
+    6 │ const message = 'Tasks App';
+  > 7 │ let currentFilter = $state<Filter>('all');
+      │ ^^^
+    8 │ let tasks = $state<Task[]>([]);
+    9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+  
+  ℹ 'currentFilter' is never reassigned.
+  
+    4 │ import type { Filter, Task } from './types';
+    5 │ 
+  > 6 │ const message = 'Tasks App';
+      │               ^^^^^^^^^^^^^
+    7 │ let currentFilter = $state<Filter>('all');
+    8 │ let tasks = $state<Task[]>([]);
+  
+  ℹ Safe fix: Use const instead.
+  
+     4  4 │   
+     5  5 │   const message = 'Tasks App';
+     6    │ - let·currentFilter·=·$state<Filter>('all');
+        6 │ + const·currentFilter·=·$state<Filter>('all');
+     7  7 │   let tasks = $state<Task[]>([]);
+     8  8 │   let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+  
+
+app.svelte:8:1 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ This let declares a variable that is only assigned once.
+  
+     6 │ const message = 'Tasks App';
+     7 │ let currentFilter = $state<Filter>('all');
+   > 8 │ let tasks = $state<Task[]>([]);
+       │ ^^^
+     9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+    10 │ 
+  
+  ℹ 'tasks' is never reassigned.
+  
+    6 │ const message = 'Tasks App';
+  > 7 │ let currentFilter = $state<Filter>('all');
+      │                             ^^^^^
+    8 │ let tasks = $state<Task[]>([]);
+    9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+  
+  ℹ Safe fix: Use const instead.
+  
+     5  5 │   const message = 'Tasks App';
+     6  6 │   let currentFilter = $state<Filter>('all');
+     7    │ - let·tasks·=·$state<Task[]>([]);
+        7 │ + const·tasks·=·$state<Task[]>([]);
+     8  8 │   let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+     9  9 │   
+  
+
+app.svelte:9:1 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ This let declares a variable that is only assigned once.
+  
+     7 │ let currentFilter = $state<Filter>('all');
+     8 │ let tasks = $state<Task[]>([]);
+   > 9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+       │ ^^^
+    10 │ 
+    11 │ const filteredTasks = $derived.by(() => {
+  
+  ℹ 'totalDone' is never reassigned.
+  
+     6 │ const message = 'Tasks App';
+     7 │ let currentFilter = $state<Filter>('all');
+   > 8 │ let tasks = $state<Task[]>([]);
+       │                  ^^^^^^^^^
+     9 │ let totalDone = $derived(tasks.reduce((total, task) => total + Number(task.done), 0));
+    10 │ 
+  
+  ℹ Safe fix: Use const instead.
+  
+     6  6 │   let currentFilter = $state<Filter>('all');
+     7  7 │   let tasks = $state<Task[]>([]);
+     8    │ - let·totalDone·=·$derived(tasks.reduce((total,·task)·=>·total·+·Number(task.done),·0));
+        8 │ + const·totalDone·=·$derived(tasks.reduce((total,·task)·=>·total·+·Number(task.done),·0));
+     9  9 │   
+    10 10 │   const filteredTasks = $derived.by(() => {
+  
+
+Checked 1 file in 5ms. No fixes applied.
+Found 3 errors.
+Found 8 warnings.
+lint ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✖ Some errors were emitted while running checks.
+                                                   
